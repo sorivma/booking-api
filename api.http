@@ -1,0 +1,20 @@
+### Health
+GET http://localhost:8080/health
+
+### Ready
+GET http://localhost:8080/ready
+
+### Rooms
+GET http://localhost:8080/api/v1/rooms
+X-API-Key: dev-api-key
+
+### Create booking
+POST http://localhost:8080/api/v1/bookings
+Content-Type: application/json
+X-API-Key: dev-api-key
+
+{
+  "room_id": "room-1",
+  "from": "2026-05-25T10:00:00+03:00",
+  "to": "2026-05-25T11:00:00+03:00"
+}
