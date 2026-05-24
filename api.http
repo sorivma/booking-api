@@ -8,6 +8,19 @@ GET http://localhost:8080/ready
 GET http://localhost:8080/api/v1/rooms
 X-API-Key: dev-api-key
 
+### Create room
+POST http://localhost:8080/api/v1/rooms
+Content-Type: application/json
+X-API-Key: dev-api-key
+
+{
+  "name": "A101"
+}
+
+### Get room
+GET http://localhost:8080/api/v1/rooms/room-1
+X-API-Key: dev-api-key
+
 ### Create booking
 POST http://localhost:8080/api/v1/bookings
 Content-Type: application/json
@@ -18,3 +31,36 @@ X-API-Key: dev-api-key
   "from": "2026-05-25T10:00:00+03:00",
   "to": "2026-05-25T11:00:00+03:00"
 }
+
+### Bookings
+GET http://localhost:8080/api/v1/bookings?room_id=room-1&status=pending
+X-API-Key: dev-api-key
+
+### Get booking
+GET http://localhost:8080/api/v1/bookings/booking-2
+X-API-Key: dev-api-key
+
+### Patch booking
+PATCH http://localhost:8080/api/v1/bookings/booking-2
+Content-Type: application/json
+X-API-Key: dev-api-key
+
+{
+  "version": 1,
+  "to": "2026-05-25T12:00:00+03:00"
+}
+
+### Approve booking
+POST http://localhost:8080/api/v1/bookings/booking-2/approve
+If-Match: 2
+X-API-Key: dev-api-key
+
+### Reject booking
+POST http://localhost:8080/api/v1/bookings/booking-2/reject
+If-Match: 1
+X-API-Key: dev-api-key
+
+### Cancel booking
+POST http://localhost:8080/api/v1/bookings/booking-2/cancel
+If-Match: 1
+X-API-Key: dev-api-key
